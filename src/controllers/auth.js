@@ -63,10 +63,21 @@ export const signin = async (req, res) => {
     if (!isMatchPassword)
       return res.status(400).json({ message: "Sai mật khẩu" });
     userExist.password = undefined;
-    const token = jwt.sign({ userExist }, "manhlinh", { expiresIn: "15m" });
+    const token = jwt.sign({ id: userExist.id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "15m",
+    });
     return res
       .status(200)
       .json({ message: "Đăng nhập thành công", userExist, token });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    return res.status(200).json(users);
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }

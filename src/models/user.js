@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const signupSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      min: 3,
+      minLength: 3,
     },
     email: {
       type: String,
@@ -29,4 +29,4 @@ const signupSchema = new mongoose.Schema(
   },
   { timestamps: true, versionKey: false }
 );
-export default mongoose.model("signup", signupSchema);
+export default mongoose.model("User", userSchema);

@@ -12,6 +12,11 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    categoryID: {
+      type: mongoose.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );

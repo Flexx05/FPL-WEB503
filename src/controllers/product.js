@@ -18,6 +18,7 @@ const productSchema = Joi.object({
     "number.positive": "Giá sản phẩm phải là số dương",
     "any.required": "Giá sản phẩm bắt buộc nhập",
   }),
+  categoryID: Joi.string().required(),
 });
 
 // Lấy tất cả sản phẩm
